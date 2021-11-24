@@ -37,7 +37,6 @@ public class Coupon {
     private String description;
     private String cpfAgent;
 
-
     public Coupon id(String id) {
         this.id = id;
         return this;

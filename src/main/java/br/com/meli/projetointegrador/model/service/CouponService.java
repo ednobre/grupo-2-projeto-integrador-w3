@@ -11,6 +11,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 
+
 /**
  * @author  Edemilson Nobre
  * @version 5.0.0
@@ -25,7 +26,11 @@ public class CouponService {
     public CouponService(CouponRepository couponRepository) {
         this.couponRepository = couponRepository;
     }
-
+    /**
+     * @param couponDTO;
+     * @param cpf, batchNumber;
+     * @return String: se o cupom foi cadastrado con sucesso ou nao;
+     */
     public String save(CouponDTO couponDTO, String cpf){
         Coupon coupon = new Coupon();
 
@@ -42,7 +47,6 @@ public class CouponService {
             logger.error(ConstantsUtil.PERSISTENCE_ERROR, e);
             throw new CouponException("Este Cupom ja foi cadastrado");
         }
-        couponRepository.save(coupon);
         return "Cupom cadastrado, codigo: ".concat(couponDTO.getCodCoupon().concat(couponDTO.getPercentage().toString()));
     }
 
