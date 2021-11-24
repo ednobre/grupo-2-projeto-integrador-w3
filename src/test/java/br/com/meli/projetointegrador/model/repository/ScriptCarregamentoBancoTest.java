@@ -44,6 +44,9 @@ class ScriptCarregamentoBancoTest {
     private RoleRepository roleRepository;
 
     @Autowired
+    private CouponRepository couponRepository;
+
+    @Autowired
     private SectionByCategoryRepository sectionByCategoryRepository;
 
     @Test
@@ -56,6 +59,7 @@ class ScriptCarregamentoBancoTest {
         sectionCategoryRepository.deleteAll();
         userRepository.deleteAll();
         agentRepository.deleteAll();
+        couponRepository.deleteAll();
 
         BigDecimal bigDecimal = new BigDecimal("45.00");
 
@@ -88,7 +92,7 @@ class ScriptCarregamentoBancoTest {
 
         Warehouse warehouseRS = new Warehouse()
                 .warehouseCode("RS1")
-                .warehouseName("Minas Gerais")
+                .warehouseName("Rio Grande do Sul")
                 .build();
         warehouseRepository.save(warehouseRS);
 
@@ -96,7 +100,7 @@ class ScriptCarregamentoBancoTest {
                 .sectionCode("LA1")
                 .sectionName("Laticinios")
                 .maxLength(10)
-                .warehouse(warehouseSP)
+                .warehouse(warehouseRS)
                 .build();
         sectionRepository.save(sectionLA);
 
@@ -104,7 +108,7 @@ class ScriptCarregamentoBancoTest {
                 .sectionCode("CO1")
                 .sectionName("Congelados")
                 .maxLength(10)
-                .warehouse(warehouseSP)
+                .warehouse(warehouseRS)
                 .build();
         sectionRepository.save(sectionCO);
 
@@ -221,6 +225,16 @@ class ScriptCarregamentoBancoTest {
 
         productRepository.saveAll(Arrays.asList(product, productDois,
                 productTres, productQuatro));
+
+        couponRepository.save(new Coupon()
+                .codCoupon("natal15")
+                .percentage(15)
+                .validity(LocalDate.now().plusWeeks(1))
+                .quantityUse(3)
+                .description("CUPOM DE TESTE 15%")
+                .cpfAgent(buyerEd.getCpf())
+                .build());
+
         assertEquals(1,Integer.valueOf(1));
     }
 }
