@@ -3,7 +3,10 @@ package br.com.meli.projetointegrador.model.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 /**
@@ -16,9 +19,8 @@ import java.time.LocalDate;
 public class CouponDTO {
 
     @NotNull(message = "codCoupon cannot be null")
-    @NotEmpty(message = "codCoupon cannot be empty")
     @NotBlank(message = "codCoupon cannot be blank")
-    @Size(min = 1, message = "sectionCode most be minimum size 1")
+    @Size(min = 1, message = "codCoupon most be minimum size 1")
     private String codCoupon;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern="dd/MM/yyyy")

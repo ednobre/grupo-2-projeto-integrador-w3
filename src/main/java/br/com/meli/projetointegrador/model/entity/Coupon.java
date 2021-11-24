@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
@@ -21,16 +20,18 @@ import java.time.LocalDate;
 
 @Data
 @Document(collection = "coupon")
+@CompoundIndexes({
+        @CompoundIndex(name = "coupon_percentage", def = "{'codCoupon' : 1, 'percentage' : 1}", unique = true)
+})
 public class Coupon {
 
     @MongoId(FieldType.OBJECT_ID)
     @Setter(AccessLevel.NONE)
     private String id;
 
-    @Indexed(unique = true)
-    private String codCoupon;
+    private String codCoupon;//////
     private LocalDate validity;
-    private Integer percentage;
+    private Integer percentage;/////
     private Integer quantityUse;
     private Integer initialQuantity;
     private String description;

@@ -2,28 +2,20 @@ package br.com.meli.projetointegrador.model.service;
 
 import Utils.ConstantsUtil;
 import br.com.meli.projetointegrador.exception.CouponException;
-import br.com.meli.projetointegrador.exception.ProductException;
-import br.com.meli.projetointegrador.model.dto.AgentDTO;
 import br.com.meli.projetointegrador.model.dto.CouponDTO;
-import br.com.meli.projetointegrador.model.entity.Agent;
 import br.com.meli.projetointegrador.model.entity.Coupon;
-import br.com.meli.projetointegrador.model.entity.Product;
 import br.com.meli.projetointegrador.model.repository.CouponRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Optional;
-
 
 /**
  * @author  Edemilson Nobre
  * @version 5.0.0
  * Camada service responsavel pela regra de negocio relacionada a PromotionService
- *  */
+ * */
 @Service
 public class CouponService {
 
@@ -51,7 +43,7 @@ public class CouponService {
             throw new CouponException("Este Cupom ja foi cadastrado");
         }
         couponRepository.save(coupon);
-        return "Cupom cadastrado com Sucesso!!!!";
+        return "Cupom cadastrado, codigo: ".concat(couponDTO.getCodCoupon().concat(couponDTO.getPercentage().toString()));
     }
 
 }
