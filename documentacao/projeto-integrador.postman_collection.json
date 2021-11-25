@@ -586,7 +586,7 @@
 			}
 		},
 		{
-			"listen": "test",
+			"listen":"test",
 			"script": {
 				"type": "text/javascript",
 				"exec": [
