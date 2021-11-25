@@ -29,9 +29,9 @@ public class Coupon {
     @Setter(AccessLevel.NONE)
     private String id;
 
-    private String codCoupon;//////
+    private String codCoupon;
     private LocalDate validity;
-    private Integer percentage;/////
+    private Integer percentage;
     private Integer quantityUse;
     private Integer initialQuantity;
     private String description;

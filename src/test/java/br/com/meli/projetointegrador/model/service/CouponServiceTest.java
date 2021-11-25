@@ -27,7 +27,7 @@ public class CouponServiceTest {
     private final CouponService couponService = new CouponService(mockCouponRepository);
 
     @Test
-    void validaCouponSalvoTeste() {
+    void validaCouponSalvoTest() {
         Buyer buyerEd = new Buyer()
                 .name("ednobre")
                 .cpf("33333333333")
@@ -49,7 +49,7 @@ public class CouponServiceTest {
     }
 
     @Test
-    void validaExceptionTeste() {
+    void validaExceptionTest() {
         Buyer buyerEd = new Buyer()
                 .name("ednobre")
                 .cpf("33333333333")
