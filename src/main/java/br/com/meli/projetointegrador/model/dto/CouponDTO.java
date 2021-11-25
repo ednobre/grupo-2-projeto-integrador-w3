@@ -20,7 +20,7 @@ public class CouponDTO {
 
     @NotNull(message = "codCoupon cannot be null")
     @NotBlank(message = "codCoupon cannot be blank")
-    @Size(min = 1, message = "codCoupon most be minimum size 1")
+    @Size(min = 4, message = "codCoupon most be minimum size 4")
     private String codCoupon;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern="dd/MM/yyyy")
